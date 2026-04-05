@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Test</title>
+</head>
+<body>
+    <div style="text-align:center;">
+        <h1>Tomato Grip Force Estimator</h1>
+        <button onclick="toggleCamera()">Toggle Camera</button>
+        <button onclick="estimateForce()">Estimate Force</button>
+        <br><br>
+        <img id="videoFeed" width="640" height="480" style="border:1px solid black;">
+        <p id="result"></p>
+    </div>
+
+    <script>
+        async function toggleCamera() {
+            await fetch("http://127.0.0.1:8000/camera/toggle", { method: "POST" });
+            document.getElementById("videoFeed").src = "http://127.0.0.1:8000/camera/feed";
+        }
+
+        async function estimateForce() {
+            let res = await fetch("http://127.0.0.1:8000/estimator/force", { method: "POST" });
+            let data = await res.json();
+            document.getElementById("result").innerText = "Predicted Grip Force: " + data.predicted_force;
+        }
+    </script>
+</body>
+</html>
