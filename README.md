@@ -1,2 +1,2 @@
-# CNN-GAN-FNN-Deep-Leaning-Model
+# CNN-GAN-FNN-Deep-Learning-Model
 Hybrid-Deep learning model for robotic grip force prediction under occlusion
